@@ -1,0 +1,82 @@
+import java.util.Scanner;
+// import = importar.
+
+public class AuditoriaIngresosBodega {
+    // public = público; class = clase.
+
+    public static void main(String[] args) {
+        // public = público; static = estático; void = vacío.
+
+        // PASO PRIMERO: preparar la lectura y los límites de las categorías.
+        Scanner scanner = new Scanner(System.in);
+        // new = nuevo.
+
+        final int LIMITE_CATEGORIA_BAJA = 10000;
+        // final = fijo; int = número entero.
+        final int LIMITE_CATEGORIA_MEDIA = 50000;
+        // final = fijo; int = número entero.
+
+        int sumaCostos = 0;
+        // int = número entero.
+        int cantidadCategoriaAlta = 0;
+        // int = número entero.
+
+        // PASO SEGUNDO: preguntar cuántos productos se revisarán.
+        System.out.println("=== COMENZAR AUDITORÍA DEL LOTE ===");
+        System.out.print("¿Cuántos productos ingresarán al lote?: ");
+        int cantidadProductos = scanner.nextInt();
+        // int = número entero.
+        scanner.nextLine();
+        // nextLine = siguiente línea de texto.
+        while (cantidadProductos <= 0) {
+            // while = mientras.
+            System.out.print("Ingresa una cantidad mayor que cero: ");
+            cantidadProductos = scanner.nextInt();
+            scanner.nextLine();
+        }
+
+        // PASO TERCERO: pedir el nombre y el costo de cada producto.
+        System.out.println("\n=== DESARROLLO: INGRESO DE PRODUCTOS ===");
+
+        for (int numeroProducto = 1; numeroProducto <= cantidadProductos; numeroProducto++) {
+            // for = para.
+            System.out.print("Nombre del producto " + numeroProducto + ": ");
+            String nombreProducto = scanner.nextLine();
+            // String = texto; nextLine = siguiente línea de texto.
+
+            System.out.print("Costo base de " + nombreProducto + ": $");
+            int costoBase = scanner.nextInt();
+            // int = número entero.
+            scanner.nextLine();
+            // nextLine = siguiente línea de texto.
+
+            sumaCostos += costoBase;
+
+            // PASO CUARTO: mostrar la categoría según el costo.
+            if (costoBase < LIMITE_CATEGORIA_BAJA) {
+                // if = si.
+                System.out.println("Alerta: Categoría Baja");
+            } else if (costoBase <= LIMITE_CATEGORIA_MEDIA) {
+                // else if = si no, si.
+                System.out.println("Alerta: Categoría Media");
+            } else {
+                // else = si no.
+                System.out.println("Alerta: Categoría Alta");
+                cantidadCategoriaAlta++;
+            }
+        }
+
+        // PASO QUINTO: sacar el promedio y mostrar el resumen del lote.
+        int costoPromedio = (int) Math.round((double) sumaCostos / cantidadProductos);
+        // int = número entero; double = número decimal; round = redondear.
+
+        System.out.println("\n=== RESULTADO DE LA AUDITORÍA ===");
+        System.out.println("Productos ingresados: " + cantidadProductos);
+        System.out.println("Costo promedio: $" + costoPromedio);
+        System.out.println("Productos de Categoría Alta: " + cantidadCategoriaAlta);
+        System.out.println("Auditoría finalizada.");
+
+        scanner.close();
+        // close = cerrar.
+    }
+}
