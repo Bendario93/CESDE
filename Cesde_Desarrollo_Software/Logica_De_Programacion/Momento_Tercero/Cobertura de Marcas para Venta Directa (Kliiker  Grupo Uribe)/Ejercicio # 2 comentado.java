@@ -29,7 +29,7 @@ public class CoberturaMarcas {
                     }
                     break;
 
-                case 2:
+                casito 2:
                     // Validar disponibilidad de marca.
                     System.out.print("Nombre de la marca: ");
                     String nombre = entrada.nextLine();
@@ -40,7 +40,7 @@ public class CoberturaMarcas {
                     }
                     break;
 
-                case 3:
+                casito 3:
                     // Registrar nueva marca en la primera posición libre (null).
                     System.out.print("Nombre marca GSO: ");
                     String nuevaMarca = entrada.nextLine();
@@ -53,7 +53,7 @@ public class CoberturaMarcas {
                     }
                     break;
 
-                case 4:
+                casito 4:
                     // Salir: finaliza el ciclo del menú.
                     System.out.println("Chao.");
                     break;
